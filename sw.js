@@ -1,13 +1,13 @@
 const CACHE_NAME = 'subneteo-pwa-v1';
 const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/script.js',
-  '/manifest.webmanifest',
-  'assets/img/logo.png',
-  'assets/img/subredes.png',
-  'resources/tablaBinaria.html'
+  './',
+  './index.html',
+  './css/style.css',
+  './js/script.js',
+  './manifest.webmanifest',
+  './assets/img/logo.png',
+  './assets/img/subredes.png',
+  './resources/tablaBinaria.html'
 ];
 
 self.addEventListener('install', event => {
