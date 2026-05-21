@@ -225,7 +225,8 @@ start index.html
 open index.html
 
 # En Linux
-xdg-open index.html```
+xdg-open index.html
+```
 
 🎯 Uso de la Herramienta
 <div align="center"> <img src="https://github.com/user-attachments/assets/5eab6299-39dc-4e2b-a54f-dd35885711c0" alt="Acerca de" width="80%"> </div>
