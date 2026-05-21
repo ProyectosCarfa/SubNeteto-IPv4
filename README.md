@@ -1,3 +1,4 @@
+```markdown
 # 🌐 Calculadora de Subredes IPv4 con VLSM
 
 <div align="center">
@@ -144,40 +145,64 @@ Las redes se ordenan automáticamente de **mayor a menor** cantidad de hosts req
 
 ```math
 2ⁿ - 2 ≥ Hosts
+```
 
-3️⃣ Determinación de CIDR
+> Donde `n` es el número mínimo de bits para hosts.
+
+### 3️⃣ Determinación de CIDR
+
+```math
 CIDR = 32 - n
+```
 
+### 4️⃣ Cálculo de Direcciones
 
-4️⃣ Cálculo de Direcciones
-Elemento	Operación
-Network ID	AND lógico entre IP y máscara
-Broadcast	OR lógico entre IP y ~máscara
-Primer Host	Network ID + 1
-Último Host	Broadcast - 1
+| Elemento | Operación |
+|----------|-----------|
+| **Network ID** | AND lógico entre IP y máscara |
+| **Broadcast** | OR lógico entre IP y ~máscara |
+| **Primer Host** | Network ID + 1 |
+| **Último Host** | Broadcast - 1 |
 
-5️⃣ Siguiente Red
+### 5️⃣ Siguiente Red
+
+```math
 Siguiente\ Red = Broadcast + 1
+```
 
-📊 Tabla Binaria
+---
+
+## 📊 Tabla Binaria
+
 La herramienta incluye una visualización detallada del proceso binario para cada subred calculada, mostrando:
 
-✅ Conversión de octetos a binario de 8 bits
-
-✅ Línea imaginaria que separa bits de red y hosts
-
-✅ Cálculo del broadcast en binario
-
-✅ Determinación del siguiente salto de red
+- ✅ Conversión de octetos a binario de 8 bits
+- ✅ Línea imaginaria que separa bits de red y hosts
+- ✅ Cálculo del broadcast en binario
+- ✅ Determinación del siguiente salto de red
 
 <div align="center">
-Vista 1	Vista 2
-<img src="https://github.com/user-attachments/assets/3939903b-39f3-4a15-ae47-f7ce4f4ff158" width="100%">	<img src="https://github.com/user-attachments/assets/797fdb11-9b7d-4e3a-bcb3-10b58312ecdb" width="100%">
-Vista 3	Vista 4
-<img src="https://github.com/user-attachments/assets/a4f90c04-1f8a-41d2-96c0-dbb0f855265a" width="100%">	<img src="https://github.com/user-attachments/assets/a6b1a639-0046-4b74-84df-4d9e7bc7e6df" width="100%">
-</div><div align="center"> <img src="https://github.com/user-attachments/assets/3104546a-ef20-4e6b-a647-f2779a42e9b7" alt="Tabla Binaria Detallada" width="80%"> </div>
+  <table>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/3939903b-39f3-4a15-ae47-f7ce4f4ff158" width="100%"></td>
+      <td><img src="https://github.com/user-attachments/assets/797fdb11-9b7d-4e3a-bcb3-10b58312ecdb" width="100%"></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/a4f90c04-1f8a-41d2-96c0-dbb0f855265a" width="100%"></td>
+      <td><img src="https://github.com/user-attachments/assets/a6b1a639-0046-4b74-84df-4d9e7bc7e6df" width="100%"></td>
+    </tr>
+  </table>
+</div>
 
-📁 Estructura del Proyecto
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3104546a-ef20-4e6b-a647-f2779a42e9b7" alt="Tabla Binaria Detallada" width="80%">
+</div>
+
+---
+
+## 📁 Estructura del Proyecto
+
+```bash
 subneteo-calculator/
 │
 ├── 📄 index.html                 # Página principal
@@ -207,23 +232,31 @@ subneteo-calculator/
 │   └── ⚙️ script.js             # Lógica de cálculo VLSM
 │
 └── 📄 README.md                 # Este archivo
+```
 
+---
 
-🔧 Instalación y Uso
-📋 Requisitos Previos
-🌐 Navegador web moderno (Chrome, Firefox, Edge, Safari)
+## 🔧 Instalación y Uso
 
-📶 Conexión a internet (para fuentes de Google y FontAwesome)
+### 📋 Requisitos Previos
 
+- 🌐 Navegador web moderno (Chrome, Firefox, Edge, Safari)
+- 📶 Conexión a internet (para fuentes de Google y FontAwesome)
 
-💻 Instalación Local
-1. Clonar el repositorio
+### 💻 Instalación Local
+
+**1. Clonar el repositorio**
+```bash
 git clone https://github.com/subneteo/subneteo-calculator.git
+```
 
-2. Navegar al directorio
+**2. Navegar al directorio**
+```bash
 cd subneteo-calculator
+```
 
-3. Abrir el archivo index.html
+**3. Abrir el archivo index.html**
+```bash
 # En Windows
 start index.html
 
@@ -232,137 +265,178 @@ open index.html
 
 # En Linux
 xdg-open index.html
+```
 
-🎯 Uso de la Herramienta
-<div align="center"> <img src="https://github.com/user-attachments/assets/5eab6299-39dc-4e2b-a54f-dd35885711c0" alt="Acerca de" width="80%"> </div>
+### 🎯 Uso de la Herramienta
 
-Paso	Acción	Ejemplo
-1	Ingresar IP Base	192.168.1.0
-2	Agregar redes	Ventas: 50 hosts
-3	Calcular	Presiona "CALCULAR SUBNETEO VLSM"
-4	Analizar	Revisa tabla de resultados y proceso binario
-
-📚 Documentación
 <div align="center">
-Sección 1	Sección 2
-<img src="https://github.com/user-attachments/assets/4b218f48-f7a5-4476-b943-e1eaec24d09f" width="100%">	<img src="https://github.com/user-attachments/assets/af40f0a8-b810-4d0b-b4da-050e07d14841" width="100%">
-</div><div align="center"> <img src="https://github.com/user-attachments/assets/5ad585c1-885b-489f-b748-1e08f8c8156f" alt="Documentación" width="80%"> </div>
-📖 Contenido de la Documentación
-✅ ¿Qué es VLSM?
+  <img src="https://github.com/user-attachments/assets/5eab6299-39dc-4e2b-a54f-dd35885711c0" alt="Acerca de" width="80%">
+</div>
 
-✅ Cómo usar la herramienta paso a paso
+| Paso | Acción | Ejemplo |
+|------|--------|---------|
+| **1** | Ingresar IP Base | `192.168.1.0` |
+| **2** | Agregar redes | `Ventas: 50 hosts` |
+| **3** | Calcular | Presiona "CALCULAR SUBNETEO VLSM" |
+| **4** | Analizar | Revisa tabla de resultados y proceso binario |
 
-✅ Fórmulas y cálculos utilizados
+---
 
-✅ Ejemplos prácticos
+## 📚 Documentación
 
-✅ Tabla de referencia rápida (Bits/CIDR/Máscara/Hosts)
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/4b218f48-f7a5-4476-b943-e1eaec24d09f" width="100%"></td>
+      <td><img src="https://github.com/user-attachments/assets/af40f0a8-b810-4d0b-b4da-050e07d14841" width="100%"></td>
+    </tr>
+  </table>
+</div>
 
-✅ Explicación del proceso binario
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/5ad585c1-885b-489f-b748-1e08f8c8156f" alt="Documentación" width="80%">
+</div>
 
-📊 Tabla de Referencia Rápida
-Bits	CIDR	Máscara	Hosts disponibles
-1	/31	255.255.255.254	0*
-2	/30	255.255.255.252	2
-3	/29	255.255.255.248	6
-4	/28	255.255.255.240	14
-5	/27	255.255.255.224	30
-6	/26	255.255.255.192	62
-7	/25	255.255.255.128	126
-8	/24	255.255.255.0	254
-9	/23	255.255.254.0	510
-10	/22	255.255.252.0	1022
-/31 solo para enlaces punto a punto
+### 📖 Contenido de la Documentación
 
-🆘 Soporte
-<div align="center"> <img src="https://github.com/user-attachments/assets/68542229-a558-4783-a576-6a25db8388e4" alt="Soporte" width="80%"> </div>
-📞 Canales de Contacto
-Canal	Contacto	Disponibilidad
-📧 Email	soporte@subneteo.com	24/7
-🐙 GitHub	github.com/subneteo-vlsm	Issues abiertos
-📚 Documentación	En la aplicación	Siempre disponible
-❓ Preguntas Frecuentes
-<details> <summary><strong>¿La herramienta es gratuita?</strong></summary>
-Sí, es completamente gratuita y de código abierto bajo licencia MIT.
+- ✅ ¿Qué es VLSM?
+- ✅ Cómo usar la herramienta paso a paso
+- ✅ Fórmulas y cálculos utilizados
+- ✅ Ejemplos prácticos
+- ✅ Tabla de referencia rápida (Bits/CIDR/Máscara/Hosts)
+- ✅ Explicación del proceso binario
 
-</details><details> <summary><strong>¿Qué es VLSM?</strong></summary>
-VLSM (Variable Length Subnet Masking) permite usar máscaras de subred de longitud variable, optimizando el uso de direcciones IPv4.
+### 📊 Tabla de Referencia Rápida
 
-</details><details> <summary><strong>¿Puedo guardar mis cálculos?</strong></summary>
-Los resultados se mantienen mientras no recargues la página. Próximamente añadiremos exportación a PDF.
+| Bits | CIDR | Máscara | Hosts disponibles |
+|------|------|---------|-------------------|
+| 1 | /31 | 255.255.255.254 | 0* |
+| 2 | /30 | 255.255.255.252 | 2 |
+| 3 | /29 | 255.255.255.248 | 6 |
+| 4 | /28 | 255.255.255.240 | 14 |
+| 5 | /27 | 255.255.255.224 | 30 |
+| 6 | /26 | 255.255.255.192 | 62 |
+| 7 | /25 | 255.255.255.128 | 126 |
+| 8 | /24 | 255.255.255.0 | 254 |
+| 9 | /23 | 255.255.254.0 | 510 |
+| 10 | /22 | 255.255.252.0 | 1022 |
 
-</details><details> <summary><strong>¿Hay límite de redes que puedo calcular?</strong></summary>
-No, puedes agregar todas las redes que necesites mientras el espacio de direcciones lo permita.
+> * /31 solo para enlaces punto a punto
 
-</details><details> <summary><strong>¿Qué formatos de IP soporta?</strong></summary>
-Soporta direcciones IPv4 en formato decimal con puntos (ej: 192.168.1.0).
+---
 
+## 🆘 Soporte
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/68542229-a558-4783-a576-6a25db8388e4" alt="Soporte" width="80%">
+</div>
+
+### 📞 Canales de Contacto
+
+| Canal | Contacto | Disponibilidad |
+|-------|----------|----------------|
+| 📧 Email | `soporte@subneteo.com` | 24/7 |
+| 🐙 GitHub | `github.com/subneteo-vlsm` | Issues abiertos |
+| 📚 Documentación | En la aplicación | Siempre disponible |
+
+### ❓ Preguntas Frecuentes
+
+<details>
+<summary><strong>¿La herramienta es gratuita?</strong></summary>
+
+> Sí, es completamente gratuita y de código abierto bajo licencia MIT.
 </details>
-⏱️ Tiempo de Respuesta
+
+<details>
+<summary><strong>¿Qué es VLSM?</strong></summary>
+
+> VLSM (Variable Length Subnet Masking) permite usar máscaras de subred de longitud variable, optimizando el uso de direcciones IPv4.
+</details>
+
+<details>
+<summary><strong>¿Puedo guardar mis cálculos?</strong></summary>
+
+> Los resultados se mantienen mientras no recargues la página. Próximamente añadiremos exportación a PDF.
+</details>
+
+<details>
+<summary><strong>¿Hay límite de redes que puedo calcular?</strong></summary>
+
+> No, puedes agregar todas las redes que necesites mientras el espacio de direcciones lo permita.
+</details>
+
+<details>
+<summary><strong>¿Qué formatos de IP soporta?</strong></summary>
+
+> Soporta direcciones IPv4 en formato decimal con puntos (ej: 192.168.1.0).
+</details>
+
+### ⏱️ Tiempo de Respuesta
+
 <div align="center">
-Días	Horario
-Lunes a Viernes	9:00 - 18:00
-Tiempo máximo	24-48 horas hábiles
+
+| Días | Horario |
+|------|---------|
+| Lunes a Viernes | 9:00 - 18:00 |
+| Tiempo máximo | 24-48 horas hábiles |
+
 </div>
-👨‍💻 Créditos
+
+---
+
+## 👨‍💻 Créditos
+
 <div align="center">
-Desarrollado por CARFA
-Redes y Comunicación de Datos I
 
-ネットワークとデータ通信 — サブネット計算プロフェッショナルツール
+### Desarrollado por **CARFA**
 
-📧 soporte@subneteo.com
+**Redes y Comunicación de Datos I**
+
+---
+
+**ネットワークとデータ通信 — サブネット計算プロフェッショナルツール**
+
+📧 **soporte@subneteo.com**
 
 </div>
-📄 Licencia
+
+---
+
+## 📄 Licencia
+
 <div align="center">
-Este proyecto está bajo la Licencia MIT
+
+Este proyecto está bajo la **Licencia MIT**
 
 </div>
-✅ Permisos
-Acción	Permitido
-Uso comercial	✅
-Modificación	✅
-Distribución	✅
-Uso privado	✅
-⚠️ Condiciones
-Mantener el aviso de copyright original
 
-Incluir la licencia en distribuciones
+### ✅ Permisos
+
+| Acción | Permitido |
+|--------|-----------|
+| Uso comercial | ✅ |
+| Modificación | ✅ |
+| Distribución | ✅ |
+| Uso privado | ✅ |
+
+### ⚠️ Condiciones
+
+- Mantener el aviso de copyright original
+- Incluir la licencia en distribuciones
+
+---
 
 <div align="center">
-🌟 ¡Gracias por usar nuestra herramienta! 🌟
-Subneteo VLSM - Demostración didáctica | Conversión binaria y cálculo automático de saltos
 
-© 2024 Subneteo VLSM | MIT License
+---
 
-</div> ```
+### 🌟 ¡Gracias por usar nuestra herramienta! 🌟
 
+**Subneteo VLSM - Demostración didáctica | Conversión binaria y cálculo automático de saltos**
 
+---
 
+**© 2024 Subneteo VLSM | MIT License**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
+```
