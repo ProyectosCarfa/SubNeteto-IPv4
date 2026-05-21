@@ -213,5 +213,70 @@ subneteo-calculator/
 📶 Conexión a internet (para fuentes de Google y FontAwesome)
 
 💻 Instalación Local
-1. Clonar el repositorio
-```git clone https://github.com/subneteo/subneteo-calculator.git ```
+1. Clonar el repositorio <br>
+```git clone https://github.com/subneteo/subneteo-calculator.git ``` <br>
+2. Navegar al directorio <br>
+```cd subneteo-calculator``` <br>
+3. Abrir el archivo index.html<br>
+```# En Windows
+start index.html
+
+# En macOS
+open index.html
+
+# En Linux
+xdg-open index.html```
+
+🎯 Uso de la Herramienta
+<div align="center"> <img src="https://github.com/user-attachments/assets/5eab6299-39dc-4e2b-a54f-dd35885711c0" alt="Acerca de" width="80%"> </div>
+
+
+📚 Documentación
+<div align="center"> <img src="https://github.com/user-attachments/assets/4b218f48-f7a5-4476-b943-e1eaec24d09f" width="48%"> <img src="https://github.com/user-attachments/assets/af40f0a8-b810-4d0b-b4da-050e07d14841" width="48%"> </div><div align="center"> <img src="https://github.com/user-attachments/assets/5ad585c1-885b-489f-b748-1e08f8c8156f" alt="Documentación" width="80%"> </div>
+
+🆘 Soporte
+<div align="center"> <img src="https://github.com/user-attachments/assets/68542229-a558-4783-a576-6a25db8388e4" alt="Soporte" width="80%"> </div>
+
+❓ Preguntas Frecuentes
+<details> <summary><strong>¿La herramienta es gratuita?</strong></summary>
+Sí, es completamente gratuita y de código abierto bajo licencia MIT.
+
+</details><details> <summary><strong>¿Qué es VLSM?</strong></summary>
+VLSM (Variable Length Subnet Masking) permite usar máscaras de subred de longitud variable, optimizando el uso de direcciones IPv4.
+
+</details><details> <summary><strong>¿Puedo guardar mis cálculos?</strong></summary>
+Los resultados se mantienen mientras no recargues la página. Próximamente añadiremos exportación a PDF.
+
+</details><details> <summary><strong>¿Hay límite de redes que puedo calcular?</strong></summary>
+No, puedes agregar todas las redes que necesites mientras el espacio de direcciones lo permita.
+
+</details><details> <summary><strong>¿Qué formatos de IP soporta?</strong></summary>
+Soporta direcciones IPv4 en formato decimal con puntos (ej: 192.168.1.0).
+
+</details>
+
+👨‍💻 Créditos
+<div align="center">
+Desarrollado por CARFA
+Redes y Comunicación de Datos I
+
+ネットワークとデータ通信 — サブネット計算プロフェッショナルツール
+
+📧 alvinescarlos887@gmail.com
+
+</div>
+
+
+📄 Licencia
+<div align="center">
+Este proyecto está bajo la Licencia MIT
+
+</div>
+
+
+🌟 ¡Gracias por usar nuestra herramienta! 🌟
+Subneteo VLSM - Demostración didáctica | Conversión binaria y cálculo automático de saltos
+
+© 2024 Subneteo VLSM | MIT License
+
+
