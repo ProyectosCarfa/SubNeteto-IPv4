@@ -5,9 +5,9 @@ const PRECACHE_URLS = [
   '/css/style.css',
   '/js/script.js',
   '/manifest.webmanifest',
-  '/assets/img/logo.png',
-  '/assets/img/subredes.png',
-  '/resources/tablaBinaria.html'
+  'assets/img/logo.png',
+  'assets/img/subredes.png',
+  'resources/tablaBinaria.html'
 ];
 
 self.addEventListener('install', event => {
