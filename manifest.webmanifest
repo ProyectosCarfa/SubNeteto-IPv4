@@ -1,0 +1,22 @@
+{
+  "name": "Subneteo IPv4 VLSM",
+  "short_name": "Subneteo",
+  "description": "Calculadora profesional de subredes IPv4 usando VLSM, disponible como aplicación web progresiva.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b3b5d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
