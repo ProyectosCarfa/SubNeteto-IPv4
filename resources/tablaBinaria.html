@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convertidor Binario ↔ Decimal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/html2.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="badge">Sistema numérico · Base 2</div>
+        <h1>Binario <span>↔</span> Decimal</h1>
+        <p>Convertidor de 8 bits con tabla interactiva</p>
+
+        <nav>
+            <ul>
+                <li><a href="/index.html"><i class="fa-solid fa-house"></i> INICIO </a></li>
+                <li><a href="/index.html#about"><i class="fa-solid fa-user"></i> ACERCA DE </a></li>
+                <li><a href="/resources/tablaBinaria.html"><i class="fa-solid fa-table"></i> TABLA BINARIA</a></li>
+                <li><a href="/index.html#documentation"><i class="fa-solid fa-file"></i> DOCUMENTACIÓN</a></li>
+                <li><a href="/index.html#support"><i class="fa-solid fa-headset"></i> SOPORTE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SELECTOR DE MODO -->
+    <div class="switcher">
+        <button id="btn-mode-dec" class="active" onclick="cambiarModo('dec')">
+            Decimal → Binario
+        </button>
+        <button id="btn-mode-bin" onclick="cambiarModo('bin')">
+            Binario → Decimal
+        </button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+       PANEL A: DECIMAL → BINARIO
+  ══════════════════════════════════════════════════════════ -->
+    <div id="panel-dec" class="panel active">
+
+        <!-- Entrada -->
+        <div class="card">
+            <div class="card-label">Número decimal</div>
+            <div class="input-row">
+                <div class="field">
+                    <label for="d-input">Ingresa un valor (0 – 255)</label>
+                    <input type="number" id="d-input" placeholder="10" min="0" max="255" autocomplete="off" />
+                    <div class="error-msg" id="d-error"></div>
+                </div>
+                <div style="padding-top:29px">
+                    <button class="btn btn-primary" onclick="convertirDecBin()">Convertir</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla -->
+        <div class="card">
+            <div class="card-label">Tabla de pesos binarios (8 bits)</div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr id="d-thead-row"></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="d-tbody-row"></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="result-row">
+                <div class="result-display">
+                    Resultado binario
+                    <span id="d-bin-result">––––––––</span>
+                </div>
+                <button class="btn btn-copy" id="d-copy-btn" onclick="copiar('d')" disabled>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                    Copiar binario
+                </button>
+            </div>
+        </div>
+
+        <!-- Pasos -->
+        <div class="card">
+            <div class="card-label">Algoritmo paso a paso</div>
+            <div id="d-steps-wrap">
+                <div class="steps-placeholder">Ingresa un número y presiona Convertir.</div>
+            </div>
+        </div>
+
+    </div><!-- /panel-dec -->
+
+
+    <!-- ══════════════════════════════════════════════════════════
+       PANEL B: BINARIO → DECIMAL
+  ══════════════════════════════════════════════════════════ -->
+    <div id="panel-bin" class="panel">
+
+        <!-- Entrada -->
+        <div class="card">
+            <div class="card-label">Número binario</div>
+            <div class="input-row">
+                <div class="field">
+                    <label for="b-input">Ingresa hasta 8 dígitos (solo 0 y 1)</label>
+                    <input type="text" id="b-input" placeholder="00001010" maxlength="8" autocomplete="off"
+                        autocorrect="off" spellcheck="false" />
+                    <div class="error-msg" id="b-error"></div>
+                </div>
+                <div style="padding-top:29px">
+                    <button class="btn btn-primary" onclick="convertirBinDec()">Convertir</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla interactiva -->
+        <div class="card">
+            <div class="card-label">Tabla de pesos binarios (8 bits)</div>
+            <div class="note">💡 También puedes hacer clic en cada celda para activar o desactivar bits.</div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr id="b-thead-row"></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="b-tbody-row"></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="result-row">
+                <div class="result-display">
+                    Resultado decimal
+                    <span id="b-dec-result">–––</span>
+                </div>
+                <button class="btn btn-copy" id="b-copy-btn" onclick="copiar('b')" disabled>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                    Copiar decimal
+                </button>
+            </div>
+        </div>
+
+        <!-- Pasos -->
+        <div class="card">
+            <div class="card-label">Algoritmo paso a paso</div>
+            <div id="b-steps-wrap">
+                <div class="steps-placeholder">Ingresa un binario y presiona Convertir.</div>
+            </div>
+        </div>
+
+    </div><!-- /panel-bin -->
+
+    <!-- TOAST -->
+    <div id="toast">✓ Copiado al portapapeles</div>
+
+    <script>
+        /* ══════════════════════════════════════════════════════════
+           CONFIGURACIÓN GLOBAL
+        ══════════════════════════════════════════════════════════ */
+        const PESOS = [128, 64, 32, 16, 8, 4, 2, 1];  // Pesos de 8 bits
+
+        let resultadoD = '';   // Guarda el binario resultado (panel Dec→Bin)
+        let resultadoB = '';   // Guarda el decimal resultado (panel Bin→Dec)
+
+        // Estado de los bits del panel Binario (array de 8 enteros: 0 o 1)
+        let bitsPanel = [0, 0, 0, 0, 0, 0, 0, 0];
+
+        /* ══════════════════════════════════════════════════════════
+           CAMBIO DE MODO (switcher)
+        ══════════════════════════════════════════════════════════ */
+        function cambiarModo(modo) {
+            // Paneles
+            document.getElementById('panel-dec').classList.toggle('active', modo === 'dec');
+            document.getElementById('panel-bin').classList.toggle('active', modo === 'bin');
+            // Botones del switcher
+            document.getElementById('btn-mode-dec').classList.toggle('active', modo === 'dec');
+            document.getElementById('btn-mode-bin').classList.toggle('active', modo === 'bin');
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           CONSTRUIR TABLAS AL CARGAR
+        ══════════════════════════════════════════════════════════ */
+        function construirTablas() {
+            construirTabla('d-thead-row', 'd-tbody-row', false);  // Dec→Bin (no clicable)
+            construirTabla('b-thead-row', 'b-tbody-row', true);   // Bin→Dec (clicable)
+        }
+
+        function construirTabla(theadId, tbodyId, clicable) {
+            const thead = document.getElementById(theadId);
+            const tbody = document.getElementById(tbodyId);
+
+            for (let i = 0; i < PESOS.length; i++) {
+                // Encabezado
+                const th = document.createElement('th');
+                th.textContent = PESOS[i];
+                thead.appendChild(th);
+
+                // Celda de bit
+                const td = document.createElement('td');
+                td.id = `${tbodyId}-bit-${i}`;
+                td.textContent = '–';
+
+                // Si es clicable (panel Bin→Dec), añadimos el evento
+                if (clicable) {
+                    td.onclick = (function (idx) {
+                        return function () { toggleBit(idx); };
+                    })(i);
+                }
+
+                tbody.appendChild(td);
+            }
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           PANEL A — DECIMAL → BINARIO
+        ══════════════════════════════════════════════════════════ */
+
+        /* Algoritmo: recorre PESOS y decide 0 o 1 */
+        function decimalABinario(numero) {
+            const bits = [];
+            const pasos = [];
+            let restante = numero;
+
+            for (let i = 0; i < PESOS.length; i++) {
+                const peso = PESOS[i];
+                if (restante >= peso) {
+                    bits.push(1);
+                    pasos.push({ peso, bit: 1, anterior: restante, restante: restante - peso });
+                    restante -= peso;
+                } else {
+                    bits.push(0);
+                    pasos.push({ peso, bit: 0, anterior: restante, restante });
+                }
+            }
+            return { bits, pasos };
+        }
+
+        /* Actualiza las celdas de la tabla Dec→Bin con animación escalonada */
+        function actualizarTablaD(bits) {
+            for (let i = 0; i < bits.length; i++) {
+                const celda = document.getElementById(`d-tbody-row-bit-${i}`);
+                celda.classList.remove('bit-0', 'bit-1', 'pop');
+                ; (function (c, b, idx) {
+                    setTimeout(() => {
+                        c.textContent = b;
+                        c.classList.add(b === 1 ? 'bit-1' : 'bit-0');
+                        c.classList.add('pop');
+                        c.addEventListener('animationend', () => c.classList.remove('pop'), { once: true });
+                    }, idx * 55);
+                })(celda, bits[i], i);
+            }
+        }
+
+        /* Función principal botón Convertir (Dec→Bin) */
+        function convertirDecBin() {
+            const input = document.getElementById('d-input');
+            const errorEl = document.getElementById('d-error');
+            const resEl = document.getElementById('d-bin-result');
+            const copyBtn = document.getElementById('d-copy-btn');
+
+            // Limpiar errores
+            errorEl.textContent = '';
+            input.classList.remove('error');
+
+            const valor = parseInt(input.value, 10);
+
+            if (input.value.trim() === '' || isNaN(valor)) {
+                errorEl.textContent = '⚠ Por favor ingresa un número.';
+                input.classList.add('error');
+                return;
+            }
+            if (valor < 0 || valor > 255) {
+                errorEl.textContent = '⚠ El valor debe estar entre 0 y 255.';
+                input.classList.add('error');
+                return;
+            }
+
+            const { bits, pasos } = decimalABinario(valor);
+
+            actualizarTablaD(bits);
+
+            resultadoD = bits.join('');
+            setTimeout(() => { resEl.textContent = resultadoD; }, bits.length * 55 + 80);
+
+            copyBtn.disabled = false;
+
+            mostrarPasosDecBin(pasos);
+        }
+
+        /* Pasos explicativos Dec→Bin */
+        function mostrarPasosDecBin(pasos) {
+            const wrap = document.getElementById('d-steps-wrap');
+            const ul = document.createElement('ul');
+            ul.className = 'steps-list';
+
+            pasos.forEach((p, i) => {
+                const li = document.createElement('li');
+                const desc = p.bit === 1
+                    ? `${p.anterior} ≥ ${p.peso} → <b style="color:var(--accent-d)">resta</b> ${p.peso} = ${p.restante}`
+                    : `${p.anterior} < ${p.peso} → no resta`;
+
+                li.innerHTML = `
+          <span class="step-val">${p.peso}</span>
+          <span class="step-bit ${p.bit === 1 ? 'one' : 'zero'}">${p.bit}</span>
+          <span>${desc}</span>
+          <span class="step-rem">resto: ${p.restante}</span>
+        `;
+                ul.appendChild(li);
+                setTimeout(() => li.classList.add('show'), i * 70 + 250);
+            });
+
+            wrap.innerHTML = '';
+            wrap.appendChild(ul);
+        }
+
+        /* Enter en input Dec→Bin */
+        document.getElementById('d-input').addEventListener('keydown', e => {
+            if (e.key === 'Enter') convertirDecBin();
+        });
+
+        /* ══════════════════════════════════════════════════════════
+           PANEL B — BINARIO → DECIMAL
+        ══════════════════════════════════════════════════════════ */
+
+        /* Algoritmo: multiplica cada bit por su peso y suma */
+        function binarioADecimal(bitsArr) {
+            const pasos = [];
+            let total = 0;
+
+            for (let i = 0; i < PESOS.length; i++) {
+                const contribucion = bitsArr[i] * PESOS[i];
+                pasos.push({ bit: bitsArr[i], peso: PESOS[i], contribucion });
+                total += contribucion;
+            }
+            return { total, pasos };
+        }
+
+        /* Actualiza las celdas de la tabla Bin→Dec */
+        function actualizarTablaB(bitsArr, animar) {
+            for (let i = 0; i < bitsArr.length; i++) {
+                const celda = document.getElementById(`b-tbody-row-bit-${i}`);
+                celda.classList.remove('bit-0', 'bit-1', 'pop');
+
+                if (animar) {
+                    ; (function (c, b, idx) {
+                        setTimeout(() => {
+                            c.textContent = b;
+                            c.classList.add(b === 1 ? 'bit-1' : 'bit-0');
+                            c.classList.add('pop');
+                            c.addEventListener('animationend', () => c.classList.remove('pop'), { once: true });
+                        }, idx * 55);
+                    })(celda, bitsArr[i], i);
+                } else {
+                    celda.textContent = bitsArr[i];
+                    celda.classList.add(bitsArr[i] === 1 ? 'bit-1' : 'bit-0');
+                    celda.classList.add('pop');
+                    celda.addEventListener('animationend', () => celda.classList.remove('pop'), { once: true });
+                }
+            }
+        }
+
+        /* Recalcula el resultado y los pasos a partir de bitsPanel */
+        function recalcularBin(animar) {
+            const { total, pasos } = binarioADecimal(bitsPanel);
+            const resEl = document.getElementById('b-dec-result');
+            const copyBtn = document.getElementById('b-copy-btn');
+
+            actualizarTablaB(bitsPanel, animar);
+
+            resultadoB = String(total);
+            const delay = animar ? bitsPanel.length * 55 + 80 : 0;
+            setTimeout(() => { resEl.textContent = resultadoB; }, delay);
+
+            copyBtn.disabled = false;
+
+            // Sync input
+            document.getElementById('b-input').value = bitsPanel.join('');
+
+            mostrarPasosBinDec(pasos, total);
+        }
+
+        /* Toggle de bit clicando celda */
+        function toggleBit(idx) {
+            bitsPanel[idx] = bitsPanel[idx] === 1 ? 0 : 1;
+            recalcularBin(false);
+        }
+
+        /* Función principal botón Convertir (Bin→Dec) */
+        function convertirBinDec() {
+            const input = document.getElementById('b-input');
+            const errorEl = document.getElementById('b-error');
+
+            errorEl.textContent = '';
+            input.classList.remove('error');
+
+            const val = input.value.trim();
+
+            if (val === '') {
+                errorEl.textContent = '⚠ Por favor ingresa un número binario.';
+                input.classList.add('error');
+                return;
+            }
+            if (!/^[01]+$/.test(val)) {
+                errorEl.textContent = '⚠ Solo se permiten dígitos 0 y 1.';
+                input.classList.add('error');
+                return;
+            }
+            if (val.length > 8) {
+                errorEl.textContent = '⚠ Máximo 8 bits (0 – 11111111).';
+                input.classList.add('error');
+                return;
+            }
+
+            // Rellenamos con ceros a la izquierda hasta 8 bits
+            const padded = val.padStart(8, '0');
+
+            // Convertimos el string en array de enteros
+            bitsPanel = padded.split('').map(Number);
+
+            recalcularBin(true);
+        }
+
+        /* Pasos explicativos Bin→Dec */
+        function mostrarPasosBinDec(pasos, total) {
+            const wrap = document.getElementById('b-steps-wrap');
+            const ul = document.createElement('ul');
+            ul.className = 'steps-list';
+
+            pasos.forEach((p, i) => {
+                const li = document.createElement('li');
+                const desc = p.bit === 1
+                    ? `<b style="color:var(--accent-d)">${p.bit}</b> × ${p.peso} = <b style="color:var(--green)">${p.contribucion}</b>`
+                    : `<span style="color:var(--faint)">${p.bit} × ${p.peso} = 0</span>`;
+
+                li.innerHTML = `
+          <span class="step-val">${p.peso}</span>
+          <span class="step-bit ${p.bit === 1 ? 'one' : 'zero'}">${p.bit}</span>
+          <span>${desc}</span>
+          <span class="step-rem">+${p.contribucion}</span>
+        `;
+                ul.appendChild(li);
+                setTimeout(() => li.classList.add('show'), i * 70 + 250);
+            });
+
+            // Fila de total
+            const liTotal = document.createElement('li');
+            liTotal.style.cssText = 'border-color:var(--green); background:rgba(0,184,122,0.05); margin-top:4px;';
+            liTotal.innerHTML = `
+        <span style="color:var(--muted);font-size:11px;letter-spacing:1px">TOTAL</span>
+        <span style="flex:1"></span>
+        <span style="color:var(--green);font-size:16px;font-weight:700">${total}</span>
+      `;
+            ul.appendChild(liTotal);
+            setTimeout(() => liTotal.classList.add('show'), pasos.length * 70 + 350);
+
+            wrap.innerHTML = '';
+            wrap.appendChild(ul);
+        }
+
+        /* Enter en input Bin→Dec */
+        document.getElementById('b-input').addEventListener('keydown', e => {
+            if (e.key === 'Enter') convertirBinDec();
+        });
+
+        /* ══════════════════════════════════════════════════════════
+           COPIAR AL PORTAPAPELES
+        ══════════════════════════════════════════════════════════ */
+        function copiar(panel) {
+            const texto = panel === 'd' ? resultadoD : resultadoB;
+            if (!texto) return;
+
+            navigator.clipboard.writeText(texto)
+                .then(mostrarToast)
+                .catch(() => {
+                    const tmp = document.createElement('textarea');
+                    tmp.value = texto;
+                    document.body.appendChild(tmp);
+                    tmp.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tmp);
+                    mostrarToast();
+                });
+        }
+
+        function mostrarToast() {
+            const t = document.getElementById('toast');
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        }
+
+        construirTablas();
+    </script>
+</body>
+</html>
