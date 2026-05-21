@@ -48,7 +48,7 @@ body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: url('/assets/img/fondo.png') center / cover no-repeat;
+    background: url('assets/img/fondo.png') center / cover no-repeat;
     z-index: -2;
 }
 
@@ -233,7 +233,7 @@ nav ul li a i {
     align-items: center;
     justify-content: center;
     background-image:
-        url('/assets/img/fondo2.png'),
+        url('assets/img/fondo2.png'),
         linear-gradient(135deg, rgba(255,255,255,.78) 0%, rgba(235,240,255,.85) 100%);
     background-size: cover, cover;
     background-position: center, center;
