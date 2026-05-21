@@ -331,3 +331,75 @@
     }
 
     
+
+
+
+    // ACTUALIZACION ABOUT SECCIONES
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Obtener las secciones
+    const homeSection = document.getElementById('home');
+    const aboutSection = document.getElementById('about');
+    let documentationSection = document.getElementById('documentation');
+    let supportSection = document.getElementById('support');
+   
+    // Función para ocultar todas las secciones
+    function hideAllSections() {
+        if (homeSection) homeSection.style.display = 'none';
+        if (aboutSection) aboutSection.style.display = 'none';
+        if (documentationSection) documentationSection.style.display = 'none';
+        if (supportSection) supportSection.style.display = 'none';
+    }
+    
+    // Función para mostrar sección específica
+    function showSection(section) {
+        hideAllSections();
+        if (section) {
+            section.style.display = 'block';
+        }
+        const resultadosCard = document.getElementById('resultadosCard');
+        if (resultadosCard) {
+            resultadosCard.style.display = 'none';
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Event listeners para los enlaces del nav
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Si es enlace externo o archivo HTML, dejar funcionar normalmente
+            if (href && (href.includes('.html') || href.startsWith('http'))) {
+                return;
+            }
+            
+            // Prevenir solo para anclas internas
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const sectionId = href.substring(1);
+                
+                switch(sectionId) {
+                    case 'home':
+                        showSection(homeSection);
+                        break;
+                    case 'about':
+                        showSection(aboutSection);
+                        break;
+                    case 'documentation':
+                        showSection(documentationSection);
+                        break;
+                    case 'support':
+                        showSection(supportSection);
+                        break;
+                    default:
+                        showSection(homeSection);
+                }
+            }
+        });
+    });
+    
+});
