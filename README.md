@@ -206,3 +206,12 @@ subneteo-calculator/
 
 ```
 
+
+🔧 Instalación y Uso
+📋 Requisitos Previos
+🌐 Navegador web moderno (Chrome, Firefox, Edge, Safari)
+📶 Conexión a internet (para fuentes de Google y FontAwesome)
+
+💻 Instalación Local
+1. Clonar el repositorio
+```git clone https://github.com/subneteo/subneteo-calculator.git ```
