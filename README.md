@@ -1,0 +1,302 @@
+# 🌐 Calculadora de Subredes IPv4 con VLSM
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/74ca454c-f75e-4a47-9b2c-f927a2e7fd4b" alt="Header" width="100%">
+</div>
+
+## 📋 Tabla de Contenidos
+
+- [Descripción General](#-descripción-general)
+- [Características Principales](#-características-principales)
+- [Tecnologías Utilizadas](#-tecnologías-utilizadas)
+- [Interfaz de Usuario](#-interfaz-de-usuario)
+- [Metodología VLSM](#-metodología-vlsm)
+- [Proceso de Cálculo](#-proceso-de-cálculo)
+- [Tabla Binaria](#-tabla-binaria)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Instalación y Uso](#-instalación-y-uso)
+- [Documentación](#-documentación)
+- [Soporte](#-soporte)
+- [Créditos](#-créditos)
+- [Licencia](#-licencia)
+
+---
+
+## 🚀 Descripción General
+
+**Calculadora de Subredes IPv4 con VLSM** es una herramienta profesional y educativa diseñada para estudiantes, administradores de redes y profesionales de TI. Permite calcular subredes IPv4 utilizando la técnica VLSM (Variable Length Subnet Masking) de manera automática, mostrando resultados detallados incluyendo representación binaria, máscaras, direcciones de red, broadcast y rangos de hosts.
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/9ea83205-5af9-4d60-88d4-688cb9f0d27e" alt="Dashboard" width="100%">
+</div>
+
+---
+
+## ⚡ Características Principales
+
+| Característica | Descripción |
+|----------------|-------------|
+| **🎯 Cálculo VLSM Automático** | Ordena redes de mayor a menor hosts y calcula subredes óptimas |
+| **📊 Proceso Binario Detallado** | Visualización paso a paso de la conversión binaria |
+| **🎨 Interfaz Moderna** | Diseño profesional con temática cyberpunk/tecnología |
+| **📱 Responsive Design** | Funciona perfectamente en dispositivos móviles y tablets |
+| **🔄 Cálculo de Saltos** | Determina automáticamente la siguiente red a partir del broadcast |
+| **📋 Tabla de Resultados** | Network ID, Broadcast, Primer/Último host, Máscara, CIDR |
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/8a41672c-b527-41a0-ae7e-e9aee37d5631" alt="Features" width="100%">
+</div>
+
+---
+
+## 💻 Tecnologías Utilizadas
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="50"><br>HTML5</td>
+      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="50"><br>CSS3</td>
+      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="50"><br>JavaScript ES6+</td>
+    </tr>
+  </table>
+</div>
+
+- **HTML5 Semántico** - Estructura clara y accesible
+- **CSS3** - Grid, Flexbox, animaciones y diseño responsive
+- **JavaScript Vanilla** - Sin dependencias externas, lógica de cálculo VLSM
+
+---
+
+## 🖥️ Interfaz de Usuario
+
+### Pantalla Principal - Calculadora
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6866c2cf-bee8-40c7-986f-7919fcbcb904" alt="Interfaz Principal" width="100%">
+</div>
+
+La interfaz principal consta de:
+1. **Campo de IP Base** - Ingresa la dirección IPv4 inicial
+2. **Panel de Redes** - Agrega redes con nombre y cantidad de hosts
+3. **Botón de Cálculo** - Ejecuta el algoritmo VLSM
+4. **Tabla de Resultados** - Muestra todas las subredes calculadas
+
+### Procesamiento y Resultados en Tiempo Real
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/11e0e528-f876-4763-a355-40dd80663b00" alt="Resultados" width="100%">
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/28391319-f33b-4ee2-a989-93a35c9985ad" alt="Proceso Binario" width="100%">
+</div>
+
+---
+
+## 📐 Metodología VLSM
+
+El sistema implementa el algoritmo VLSM siguiendo estos pasos:
+
+### 1. Ordenamiento
+Las redes se ordenan automáticamente de **mayor a menor** cantidad de hosts requeridos.
+
+### 2. Cálculo de Bits Necesarios
+Fórmula: 2ⁿ - 2 ≥ Hosts
+
+text
+Donde `n` es el número mínimo de bits para hosts.
+
+### 3. Determinación de CIDR
+CIDR = 32 - n
+
+text
+
+### 4. Cálculo de Direcciones
+- **Network ID**: AND lógico entre IP y máscara
+- **Broadcast**: OR lógico entre IP y ~máscara
+- **Primer Host**: Network ID + 1
+- **Último Host**: Broadcast - 1
+
+### 5. Siguiente Red
+Siguiente Red = Broadcast + 1
+
+text
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/fd0b6227-56a4-4f5f-8225-de79cf30f3b2" alt="Proceso Final" width="100%">
+</div>
+
+---
+
+## 📊 Tabla Binaria
+
+La herramienta incluye una visualización detallada del proceso binario para cada subred calculada, mostrando:
+
+- Conversión de octetos a binario de 8 bits
+- Línea imaginaria que separa bits de red y hosts
+- Cálculo del broadcast en binario
+- Determinación del siguiente salto de red
+
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/3939903b-39f3-4a15-ae47-f7ce4f4ff158" width="100%"></td>
+      <td><img src="https://github.com/user-attachments/assets/797fdb11-9b7d-4e3a-bcb3-10b58312ecdb" width="100%"></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/user-attachments/assets/a4f90c04-1f8a-41d2-96c0-dbb0f855265a" width="100%"></td>
+      <td><img src="https://github.com/user-attachments/assets/a6b1a639-0046-4b74-84df-4d9e7bc7e6df" width="100%"></td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3104546a-ef20-4e6b-a647-f2779a42e9b7" alt="Tabla Binaria Detallada" width="80%">
+</div>
+
+---
+
+## 📁 Estructura del Proyecto
+subneteo-calculator/
+│
+├── index.html # Página principal
+├── manifest.webmanifest # PWA manifest
+├── sw.js # Service Worker
+│
+├── assets/
+│ ├── img/
+│ │ ├── fondo.png # Fondo principal
+│ │ ├── fondo2.png # Fondo secundario
+│ │ ├── logo.png # Logo del sitio
+│ │ ├── subredes.png # Icono de subredes
+│ │ └── footer/
+│ │ ├── personaje1.png
+│ │ ├── personaje2.png
+│ │ ├── personaje3.png
+│ │ └── personaje4.png
+│ │
+│ └── resources/
+│ ├── tablaBinaria.html
+│ └── documentacion.pdf
+│
+├── css/
+│ └── style.css # Estilos principales
+│
+├── js/
+│ └── script.js # Lógica de cálculo VLSM
+│
+└── README.md # Este archivo
+
+text
+
+---
+
+## 🔧 Instalación y Uso
+
+### Requisitos Previos
+- Navegador web moderno (Chrome, Firefox, Edge, Safari)
+- Conexión a internet (para fuentes de Google y FontAwesome)
+
+### Instalación Local
+
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/subneteo/subneteo-calculator.git
+Navegar al directorio
+
+bash
+cd subneteo-calculator
+Abrir el archivo index.html
+
+bash
+# En Windows
+start index.html
+
+# En macOS
+open index.html
+
+# En Linux
+xdg-open index.html
+Uso de la Herramienta
+<div align="center"> <img src="https://github.com/user-attachments/assets/5eab6299-39dc-4e2b-a54f-dd35885711c0" alt="Acerca de" width="80%"> </div>
+Ingresar IP Base - Ejemplo: 192.168.1.0
+
+Agregar Redes - Especifica nombre y cantidad de hosts
+
+Calcular - Presiona el botón "CALCULAR SUBNETEO VLSM"
+
+Analizar Resultados - Revisa la tabla generada y el proceso binario
+
+📚 Documentación
+<div align="center"> <table> <tr> <td><img src="https://github.com/user-attachments/assets/4b218f48-f7a5-4476-b943-e1eaec24d09f" width="100%"></td> <td><img src="https://github.com/user-attachments/assets/af40f0a8-b810-4d0b-b4da-050e07d14841" width="100%"></td> </tr> </table> </div><div align="center"> <img src="https://github.com/user-attachments/assets/5ad585c1-885b-489f-b748-1e08f8c8156f" alt="Documentación" width="80%"> </div>
+La documentación completa incluye:
+
+✅ ¿Qué es VLSM?
+
+✅ Cómo usar la herramienta paso a paso
+
+✅ Fórmulas y cálculos utilizados
+
+✅ Ejemplos prácticos
+
+✅ Tabla de referencia rápida (Bits/CIDR/Máscara/Hosts)
+
+✅ Explicación del proceso binario
+
+🆘 Soporte
+<div align="center"> <img src="https://github.com/user-attachments/assets/68542229-a558-4783-a576-6a25db8388e4" alt="Soporte" width="80%"> </div>
+Canales de Contacto
+Canal	Contacto
+📧 Email	soporte@subneteo.com
+🐙 GitHub	github.com/subneteo-vlsm
+Preguntas Frecuentes
+¿La herramienta es gratuita?
+
+Sí, es completamente gratuita y de código abierto bajo licencia MIT.
+
+¿Qué es VLSM?
+
+VLSM (Variable Length Subnet Masking) permite usar máscaras de subred de longitud variable, optimizando el uso de direcciones IPv4.
+
+¿Puedo guardar mis cálculos?
+
+Los resultados se mantienen mientras no recargues la página. Próximamente añadiremos exportación a PDF.
+
+¿Hay límite de redes que puedo calcular?
+
+No, puedes agregar todas las redes que necesites mientras el espacio de direcciones lo permita.
+
+¿Qué formatos de IP soporta?
+
+Soporta direcciones IPv4 en formato decimal con puntos (ej: 192.168.1.0).
+
+Tiempo de Respuesta
+⏱️ 24-48 horas hábiles
+
+🕘 Horario: Lunes a Viernes - 9:00 a 18:00
+
+👨‍💻 Créditos
+Desarrollado por CARFA
+
+Redes y Comunicación de Datos I
+
+<div align="center"> <p> <strong>ネットワークとデータ通信 — サブネット計算プロフェッショナルツール</strong> </p> <p> <a href="mailto:soporte@subneteo.com">📧 soporte@subneteo.com</a> </p> </div>
+📄 Licencia
+Este proyecto está bajo la licencia MIT. Esto significa que puedes:
+
+✅ Usar el software con fines comerciales y privados
+
+✅ Modificar el código fuente
+
+✅ Distribuir copias del software
+
+✅ Incluir el software en productos comerciales
+
+Solo se requiere mantener el aviso de copyright original.
+
+<div align="center"> <p> <sub> Subneteo VLSM - Demostración didáctica | Conversión binaria y cálculo automático de saltos </sub> </p> <p> <sub>© 2024 Subneteo VLSM | MIT
