@@ -233,7 +233,12 @@ xdg-open index.html
 
 
 📚 Documentación
-<div align="center"> <img src="https://github.com/user-attachments/assets/4b218f48-f7a5-4476-b943-e1eaec24d09f" width="48%"> <img src="https://github.com/user-attachments/assets/af40f0a8-b810-4d0b-b4da-050e07d14841" width="48%"> </div><div align="center"> <br><img src="https://github.com/user-attachments/assets/5ad585c1-885b-489f-b748-1e08f8c8156f" alt="Documentación" width="80%"> </div>
+<div align="center"> 
+      <img src="https://github.com/user-attachments/assets/4b218f48-f7a5-4476-b943-e1eaec24d09f" width="48%"> <br>
+      <img src="https://github.com/user-attachments/assets/af40f0a8-b810-4d0b-b4da-050e07d14841" width="48%"> 
+</div>
+  <div align="center"> <br>
+    <img src="https://github.com/user-attachments/assets/5ad585c1-885b-489f-b748-1e08f8c8156f" alt="Documentación" width="80%"> </div>
 
 🆘 Soporte
 <div align="center"> <img src="https://github.com/user-attachments/assets/68542229-a558-4783-a576-6a25db8388e4" alt="Soporte" width="80%"> </div>
@@ -278,6 +283,6 @@ Este proyecto está bajo la Licencia MIT
 🌟 ¡Gracias por usar nuestra herramienta! 🌟
 Subneteo VLSM - Demostración didáctica | Conversión binaria y cálculo automático de saltos
 
-© 2024 Subneteo VLSM | MIT License
+© 2026 Subneteo VLSM | MIT License
 
 
