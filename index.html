@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#0b3b5d">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Subneteo IPv4 VLSM">
+    <link rel="apple-touch-icon" href="assets/img/logo-192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>Subneteo IPv4 VLSM - CARFA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/img/logeo.png" alt="logo">
+            <h3>REDES Y COMUNICACION DE DATOS I</h3>
+            <p>ネットワークとデータ通信!</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home"><i class="fa-solid fa-house"></i> INICIO </a></li>
+                <li><a href="#about"><i class="fa-solid fa-user"></i> ACERCA DE </a></li>
+                <li><a href="resources/tablaBinaria.html"><i class="fa-solid fa-table"></i> TABLA BINARIA</a></li>
+                <li><a href="#documentation"><i class="fa-solid fa-file"></i> DOCUMENTACIÓN</a></li>
+                <li><a href="#support"><i class="fa-solid fa-headset"></i> SOPORTE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="container">
+        <div class="card">
+            <div class="titulo">
+                <h1>
+                    CALCULADORA DE <span>
+                        <img src="assets/img/subredes.png" alt="subredes" style="width: 350px;"> IPV4
+                    </span>
+                </h1>
+                <p style="color: white;">Herramienta profesional para el cálculo de subredes IPv4
+                    utilizando VLSM. Ingresa tu dirección IP
+                    base y los hosts requeridos para obtener toda la información de subredes de forma rápida y precisa.
+                </p>
+            </div>
+        </div>
+
+        <!-- Panel de entrada -->
+        <div class="card">
+            <h3><i class="fa-solid fa-network-wired"></i> 1. Red Base IPv4</h3>
+            <div class="input-group">
+                <div class="field">
+                    <label>Dirección IPv4 base (ej: 172.60.10.0)</label>
+                    <input type="text" id="baseIp" placeholder="172.60.10.0" value="172.60.10.0">
+                </div>
+            </div>
+
+            <h3><i class="fa-solid fa-plus-circle"></i> 2. Agregar Redes / Subredes</h3>
+            <div class="input-group">
+                <div class="field">
+                    <label>Nombre de la red</label>
+                    <input type="text" id="redNombre" placeholder="Ej: Sullana">
+                </div>
+                <div class="field">
+                    <label>Hosts requeridos</label>
+                    <input type="number" id="redHosts" placeholder="Cantidad de hosts" min="1">
+                </div>
+                <button id="btnAgregarRed"><i class="fa-solid fa-plus"></i> Agregar Red</button>
+            </div>
+
+            <h4>Redes cargadas <span id="contadorRedes">0</span></h4>
+            <table class="tabla-redes" id="tablaRedesCargadas">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Hosts</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyRedes">
+                    <tr>
+                        <td colspan="3" style="text-align:center;">No hay redes, agrega usando el formulario</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="btnCalcular" class="btn-secondary"><i class="fa-solid fa-calculator"></i> CALCULAR SUBNETEO
+                VLSM</button>
+        </div>
+
+        <!-- Resultados dinámicos -->
+        <div class="card" id="resultadosCard" style="display:none;">
+            <h3><i class="fa-solid fa-diagram-project"></i> Resultados de Subneteo (ordenado mayor a menor hosts)</h3>
+            <div class="result-table" id="resultadosTabla"></div>
+            <div id="procesoBinarioDetalle"></div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="card-about">
+            <div class="titulo-about">
+                <h1>
+                    <span class="title-main">CONOCE MÁS SOBRE</span>
+                    <span class="title-highlight">
+                        <img src="assets/img/subredes.png" alt="subredes" style="width: 300px; height: 45px;">
+                        SUBNETEO IPv4
+                    </span>
+                </h1>
+                <p class="description-about">
+                    Herramienta profesional para el cálculo de subredes IPv4 utilizando VLSM (Variable Length Subnet
+                    Masking).
+                    Ingresa tu dirección IP base y los hosts requeridos para obtener toda la información de subredes de
+                    forma rápida y precisa.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <!-- Tecnologías Usadas -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3>TECNOLOGÍAS USADAS</h3>
+                    <ul class="tech-list">
+                        <li><i class="fa-brands fa-html5"></i> HTML5 Semántico</li>
+                        <li><i class="fa-brands fa-css3-alt"></i> CSS3 Flex/Grid</li>
+                        <li><i class="fa-brands fa-js"></i> JavaScript ES6+</li>
+                        <li><i class="fa-solid fa-chart-line"></i> Algoritmos VLSM</li>
+                        <li><i class="fa-solid fa-mobile-screen"></i> Diseño Responsive</li>
+                    </ul>
+                </div>
+
+                <!-- Características -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fa-solid fa-star-of-life"></i>
+                    </div>
+                    <h3>CARACTERÍSTICAS</h3>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Cálculo automático VLSM</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Ordenamiento mayor a menor hosts</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Conversión binaria detallada</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Cálculo de saltos de red</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Interfaz 100% responsiva</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Visualización en tiempo real</li>
+                    </ul>
+                </div>
+
+                <!-- Metodología VLSM -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <h3>METODOLOGÍA VLSM</h3>
+                    <p>El sistema ordena automáticamente las redes de mayor a menor cantidad de hosts, calcula los bits
+                        necesarios con la fórmula <strong>(2ⁿ - 2 ≥ hosts)</strong>, y genera:</p>
+                    <ul class="method-list">
+                        <li><i class="fa-solid fa-network-wired"></i> Dirección de Red (Network ID)</li>
+                        <li><i class="fa-solid fa-broadcast-tower"></i> Broadcast</li>
+                        <li><i class="fa-solid fa-computer"></i> Rango de Hosts válidos</li>
+                        <li><i class="fa-solid fa-mask"></i> Máscara de subred</li>
+                        <li><i class="fa-solid fa-chart-simple"></i> Prefijo CIDR</li>
+                        <li><i class="fa-solid fa-code"></i> Proceso binario paso a paso</li>
+                    </ul>
+                </div>
+
+                <!-- Información del Proyecto -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <h3>INFORMACIÓN DEL PROYECTO</h3>
+                    <div class="project-info">
+                        <p><i class="fa-regular fa-building"></i> <strong>Curso:</strong> Redes y Comunicación de
+                            Datos I</p>
+                        <p><i class="fa-regular fa-calendar"></i> <strong>Año:</strong> May 2025</p>
+                        <p><i class="fa-solid fa-code-branch"></i> <strong>Versión:</strong> 1.0.0</p>
+                        <p><i class="fa-regular fa-registered"></i> <strong>Licencia:</strong> MIT License</p>
+                    </div>
+                    <div class="repo-badge">
+                        <i class="fa-brands fa-github"></i> github.com/subneteo-vlsm
+                    </div>
+                </div>
+            </div>
+
+            <!-- Créditos y contacto -->
+            <div class="about-footer">
+                <div class="credits">
+                    <p>Creado por <strong>CARFA</strong> — Redes y Comunicación de Datos I</p>
+                    <p class="japanese-credit">ネットワークとデータ通信 — サブネット計算プロフェッショナルツール</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:alvinescarlos887@gmail.com" class="contact-link"><i
+                            class="fa-regular fa-envelope"></i>
+                        alvinescarlos887@gmail.com</a>
+                    <a href="https://github.com/ProyectosCarfa/SubNeteto-IPv4" target="_blank" class="contact-link"><i
+                            class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documentation" class="container">
+        <div class="card-documentation">
+            <h2><i class="fa-solid fa-file"></i> DOCUMENTACIÓN</h2>
+            <p class="doc-subtitle">Guía completa para el uso de la calculadora de subredes IPv4 con VLSM</p>
+
+            <div class="docs-content">
+                <!-- ¿Qué es VLSM? -->
+                <div class="doc-section">
+                    <h3><i class="fa-solid fa-question-circle"></i> ¿QUÉ ES VLSM?</h3>
+                    <p>VLSM (Variable Length Subnet Masking) es una técnica que permite utilizar máscaras de subred de
+                        longitud variable dentro de una misma red, optimizando el espacio de direcciones IPv4 y evitando
+                        el
+                        desperdicio de IPs.</p>
+                </div>
+
+                <!-- Cómo usar la herramienta -->
+                <div class="doc-section">
+                    <h3><i class="fa-solid fa-play-circle"></i> CÓMO USAR LA HERRAMIENTA</h3>
+                    <ol class="doc-list">
+                        <li><strong>Paso 1:</strong> Ingresa la dirección IPv4 base (ejemplo: 192.168.1.0)</li>
+                        <li><strong>Paso 2:</strong> Agrega las redes que necesitas con nombre y cantidad de hosts</li>
+                        <li><strong>Paso 3:</strong> Presiona el botón "CALCULAR SUBNETEO VLSM"</li>
+                        <li><strong>Paso 4:</strong> Visualiza la tabla de resultados y el proceso binario detallado
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Fórmulas utilizadas -->
+                <div class="doc-section">
+                    <h3><i class="fa-solid fa-chart-simple"></i> FÓRMULAS Y CÁLCULOS</h3>
+                    <div class="formulas-grid">
+                        <div class="formula-card">
+                            <span class="formula-title">Bits de Host</span>
+                            <p class="formula">2ⁿ - 2 ≥ Hosts</p>
+                            <span class="formula-desc">n = número de bits necesarios</span>
+                        </div>
+                        <div class="formula-card">
+                            <span class="formula-title">Prefijo CIDR</span>
+                            <p class="formula">/32 - n</p>
+                            <span class="formula-desc">Donde n = bits de host</span>
+                        </div>
+                        <div class="formula-card">
+                            <span class="formula-title">Hosts Disponibles</span>
+                            <p class="formula">2ⁿ - 2</p>
+                            <span class="formula-desc">Hosts utilizables por subred</span>
+                        </div>
+                        <div class="formula-card">
+                            <span class="formula-title">Siguiente Red</span>
+                            <p class="formula">Broadcast + 1</p>
+                            <span class="formula-desc">Salto para la siguiente subred</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejemplo práctico -->
+                <div class="doc-section">
+                    <h3><i class="fa-solid fa-lightbulb"></i> EJEMPLO PRÁCTICO</h3>
+                    <div class="example-box">
+                        <p><strong>Datos de entrada:</strong></p>
+                        <ul>
+                            <li>IP Base: <code>192.168.1.0/24</code></li>
+                            <li>Red A (Ventas): 50 hosts</li>
+                            <li>Red B (RRHH): 20 hosts</li>
+                            <li>Red C (IT): 10 hosts</li>
+                        </ul>
+                        <p><strong>Resultado del cálculo VLSM:</strong></p>
+                        <ul>
+                            <li>Red A: <code>192.168.1.0/26</code> (62 hosts disponibles)</li>
+                            <li>Red B: <code>192.168.1.64/27</code> (30 hosts disponibles)</li>
+                            <li>Red C: <code>192.168.1.96/28</code> (14 hosts disponibles)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tabla de referencia rápida -->
+                <div class="doc-section">
+                    <h3><i class="fa-solid fa-table"></i> TABLA DE REFERENCIA RÁPIDA</h3>
+                    <div class="reference-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Bits</th>
+                                    <th>CIDR</th>
+                                    <th>Máscara</th>
+                                    <th>Hosts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>/31</td>
+                                    <td>255.255.255.254</td>
+                                    <td>0*</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>/30</td>
+                                    <td>255.255.255.252</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>/29</td>
+                                    <td>255.255.255.248</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>/28</td>
+                                    <td>255.255.255.240</td>
+                                    <td>14</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>/27</td>
+                                    <td>255.255.255.224</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>/26</td>
+                                    <td>255.255.255.192</td>
+                                    <td>62</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>/25</td>
+                                    <td>255.255.255.128</td>
+                                    <td>126</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>/24</td>
+                                    <td>255.255.255.0</td>
+                                    <td>254</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>/23</td>
+                                    <td>255.255.254.0</td>
+                                    <td>510</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>/22</td>
+                                    <td>255.255.252.0</td>
+                                    <td>1022</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="table-note">* /31 solo para enlaces punto a punto</p>
+                    </div>
+                </div>
+
+                <!-- Proceso binario explicado -->
+                <div class="doc-section">
+                    <h3><i class="fa-solid fa-microchip"></i> PROCESO BINARIO</h3>
+                    <p>El sistema convierte los octetos de la dirección IP a binario y aplica la máscara para obtener:
+                    </p>
+                    <ul class="binary-steps">
+                        <li><strong>Network ID:</strong> AND lógico entre IP y máscara</li>
+                        <li><strong>Broadcast:</strong> OR lógico entre IP y ~máscara</li>
+                        <li><strong>Primer host:</strong> Network ID + 1</li>
+                        <li><strong>Último host:</strong> Broadcast - 1</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="doc-footer">
+                <p><i class="fa-regular fa-copyright"></i> Documentación actualizada - Redes y Comunicación de Datos I
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="container">
+        <div class="card-support">
+            <h2><i class="fa-solid fa-headset"></i> SOPORTE</h2>
+            <p class="support-subtitle">Estamos aquí para ayudarte con cualquier duda o problema que puedas tener</p>
+
+            <div class="support-grid">
+                <!-- Canal de Email -->
+                <div class="support-channel">
+                    <div class="channel-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <h3>EMAIL</h3>
+                    <p>Para consultas generales, dudas sobre el uso de la herramienta o reporte de errores</p>
+                    <a href="mailto:alvinescarlos887@gmail.com" class="channel-link">
+                        <i class="fa-regular fa-envelope"></i> alvinescarlos887@gmail.com
+                    </a>
+                </div>
+
+                <!-- Canal de GitHub -->
+                <div class="support-channel">
+                    <div class="channel-icon">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <h3>GITHUB</h3>
+                    <p>Reporta issues, contribuye al proyecto o revisa el código fuente</p>
+                    <a href="https://github.com/ProyectosCarfa/SubNeteto-IPv4" target="_blank" class="channel-link">
+                        <i class="fa-brands fa-github"></i> github.com/subneteo-vlsm
+                    </a>
+                </div>
+
+                <!-- Canal de Documentación -->
+                <div class="support-channel">
+                    <div class="channel-icon">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <h3>DOCUMENTACIÓN</h3>
+                    <p>Revisa la guía completa de uso y ejemplos prácticos</p>
+                    <a href="#documentation" class="channel-link" onclick="showSection('documentation')">
+                        <i class="fa-solid fa-file-alt"></i> Ver Documentación
+                    </a>
+                </div>
+            </div>
+
+            <!-- Preguntas Frecuentes -->
+            <div class="faq-section">
+                <h3><i class="fa-solid fa-circle-question"></i> PREGUNTAS FRECUENTES</h3>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>¿La herramienta es gratuita?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, es completamente gratuita y de código abierto bajo licencia MIT.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>¿Qué es VLSM y para qué sirve?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>VLSM (Variable Length Subnet Masking) permite usar máscaras de subred de longitud
+                                variable, optimizando el uso de direcciones IPv4.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>¿Puedo guardar mis cálculos?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Los resultados se mantienen mientras no recargues la página. Próximamente añadiremos
+                                exportación a PDF.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>¿Hay límite de redes que puedo calcular?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, puedes agregar todas las redes que necesites mientras el espacio de direcciones lo
+                                permita.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>¿Cómo reporto un error?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Puedes reportar errores a través del correo alvinescarlos887@gmail.com o abrir un issue
+                                en
+                                GitHub.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <span>¿Qué formatos de IP soporta?</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Soporta direcciones IPv4 en formato decimal con puntos (ej: 192.168.1.0).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tiempo de respuesta -->
+            <div class="support-footer">
+                <div class="response-time">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Tiempo de respuesta: 24-48 horas hábiles</span>
+                </div>
+                <div class="support-attention">
+                    <i class="fa-regular fa-building"></i>
+                    <span>Horario de atención: Lunes a Viernes - 9:00 a 18:00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="nota">
+            <div class="icon">
+                <i class="fa-solid fa-calculator"></i>
+            </div>
+            <h4>CÁLCULOS PRECISOS</h4>
+            <p>Implementa el método VLSM para el aprovechamiento optimo del espacio de direcciones</p>
+            <span>正確な計算</span>
+            <img src="assets/img/footer/personaje1.png" alt="personaje1">
+        </div>
+        <div class="nota">
+            <div class="icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4>VALIDACÍON AUTOMATICA</h4>
+            <p>Verificación automatica de entradas y prevencion de errores en tiempo real</p>
+            <span>自動検証</span>
+            <img src="assets/img/footer/personaje2.png" alt="personaje2">
+        </div>
+        <div class="nota">
+            <div class="icon">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h4>RESULTADOS RÁPIDOS</h4>
+            <p>Obtén todos los datos de subred que necesitas en segundos con precisicionprofesional</p>
+            <span>迅速な結果</span>
+            <img src="assets/img/footer/personaje3.png" alt="personaje3">
+        </div>
+        <div class="nota">
+            <div class="icon">
+                <i class="fa-solid fa-chart-column"></i>
+            </div>
+            <h4>VISUALIZACIÓN CLARA</h4>
+            <p>Tablas organizadas y faciles de entender para mejorar analisis de redes</p>
+            <span>明確な視覚化</span>
+            <img src="assets/img/footer/personaje4.png" alt="personaje4">
+        </div>
+
+        <p>Subneteo VLSM - Demostración didáctica | Conversión binaria y cálculo automático de saltos</p>
+    </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="js/script.js"></script>
+</body>
+
+</html>
